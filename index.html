@@ -24,17 +24,18 @@
             flex-direction: column; /* Add this line */
             align-items: center; /* Add this line */
             padding-top: 100px; /* Add padding-top to avoid overlapping with the fixed header */
-           overflow-y: hidden; /* Disable vertical scrolling */
+            overflow-y: hidden; /* Disable vertical scrolling */
 
         }
-      .rect-container {
-        background-color: white;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 25%;
-        height: 100%;
-      }
+
+        .rect-container {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 25%;
+            height: 100%;
+        }
 
         .container {
             display: flex;
@@ -53,7 +54,7 @@
             position: fixed; /* Make the list fixed */
             left: 0; /* Position it at the left */
             top: 100px; /* Position it below the fixed header */
-            
+
         }
 
         li {
@@ -85,8 +86,8 @@
             width: 40%; /* Adjust as needed */
             margin-left: 250px; /* Adjust margin-left to create space */
             text-align: left;
-            
-            
+
+
         }
 
         .image-container {
@@ -95,29 +96,65 @@
         }
 
         .gallery-container {
-          	align-content: center;
-          margin-left: 185px;
-            top: 10px; 
+            align-content: center;
+            margin-left: 185px;
+            top: 10px;
             float: left;
             display: flex;
         }
 
         .gallery-container img {
-    align-content: center;
-    margin-left: -35px;
-    margin-right: -35px;
-    margin-top: -115px; /* Adjust the margin-top as needed to position the images higher */
-    margin-bottom: 10px;
-}
+            align-content: center;
+            margin-left: -35px;
+            margin-right: -35px;
+            margin-top: -115px; /* Adjust the margin-top as needed to position the images higher */
+            margin-bottom: 10px;
+            cursor: pointer; /* Add this line */
 
+        }
 
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white; /* Change background color to white */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .overlay img {
+            height: 450px;
+            margin-left: 10px;
+        }
+
+        .overlay p {
+            color: black;
+            font-size: 18px;
+            margin-top: -300px;
+            margin-left: 40px;
+            text-align: left;
+        }
+      
+        /* Style the first line of text */
+        .overlay p:first-line {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* Style the text under the first line */
+        .overlay p:not(:first-line) {
+            font-weight: normal;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
-
-    <div class="rect-container">
-  </div>
+    <div class="rect-container"></div>
     <h1><img src="sign.png" alt="Name" width="280"></h1>
 
     <div class="container">
@@ -152,89 +189,101 @@
                     <img class="hover-image" src="circled.png" alt="hover" width="130" height="40">
                 </a>
             </li>
-    </ul>
-    <div class="gallery-container">
-      <figure>
-        <img src="me 1.jpg" alt="me" height="450">
-        <figcaption>
-            Self Support<br>2023
-        </figcaption>
-        </figure>
-        <figure>
-        <img src="feast for fame.jpg" alt="feast" height="450">
-        <figcaption>
-            Feast for Fame<br>2023
-        </figcaption>
-        </figure>
-        <figure>
-        <img src="love in colour.jpg" alt="love" height="450">
-        <figcaption>
-            Love in Colour<br>2023
-        </figcaption>
-        </figure>
-      <figure>
-       <img src="flood.jpg" alt="flood" height="450">
-       <figcaption>
-            Flood<br>2023
-       </figcaption>
-       </figure>
-       <figure>
-       <img src="coll age.jpg" alt="coll age" height="450"> 
-       <figcaption>
-            Coll age<br>2023
-        </figcaption>
-       </figure>
-       <figure>
-       <img src="hands1.jpg" alt="hands" height="450">
-       <figcaption>
-            hands<br>2023
-        </figcaption>
-       </figure>
-    
-       <figure>
-       <img src="self portraits.PNG" alt="self portraits" height="450">
-       <figcaption>
-            Self Portraits<br>2023
-       </figcaption>
-       </figure>
-       <figure>
-       <img src="mag1.jpg" alt="Magazine" height="450"> 
-       <figcaption>
-            Magazine Project<br>2023
-        </figcaption>
-       </figure>
-       <figure>
-       <img src="natural disaster.PNG" alt="natural disaster" height="450">
-       <figcaption>
-            Under Construction<br>2022
-        </figcaption>
-       </figure>
-       <figure>
-       <img src="under construction.PNG" alt="under construction" height="450">
-       <figcaption>
-            Natural Disaster<br>2022
-       </figcaption>
-       </figure>
-       <figure>
-       <img src="dmproject2.PNG" alt="digital media" height="450"> 
-       <figcaption>
-            Digital Media Project<br>2022
-        </figcaption>
-       </figure>
-       <figure>
-       <img src="yokohama.PNG" alt="yokohama" height="450">
-       <figcaption>
-            Yokohama<br>2021
-        </figcaption>
-       </figure>
-       <figure>
-       <img src="mono3.jpg" alt="null" height="450">
-       <figcaption>
-            Null<br>2021
-       </figcaption>
-       </figure>
+        </ul>
+        <div class="gallery-container">
+            <figure>
+                <img src="tinier.jpg" alt="me" height="450" onclick="openOverlay(['tinier.jpg'], 'Tinier', 'Photoshop', '2023', 'Assignment: Insert yourself in an imaginary landscape')">
+                <figcaption>Tinier<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="me 1.jpg" alt="me" height="450" onclick="openOverlay(['me 1.jpg', 'me 2.jpg'], 'Self Support', 'Photoshop', '2023', 'Assignment: Create an image with multiple versions of yourself')">
+                <figcaption>Self Support<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="feast for fame.jpg" alt="feast" height="450" onclick="openOverlay(['feast for fame.jpg'], 'Feast for Fame', 'Photoshop', '2023', 'Assignment: Create an image with the combination of three seperate images')">
+                <figcaption>Feast for Fame<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="love in colour.jpg" alt="love" height="450" onclick="openOverlay(['love in colour.jpg'], 'Love in Colour', 'Photoshop', '2023', 'Assignment: A visual in regards to a social matter')">
+                <figcaption>Love in Colour<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="flood.jpg" alt="flood" height="450" onclick="openOverlay(['flood.jpg'], 'Flood', 'Photoshop', '2023', 'Assignment: Draw an image on Photoshop with the brush tools)">
+                <figcaption>Flood<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="coll age.jpg" alt="coll age" height="450" onclick="openOverlay(['coll age.jpg'], 'Coll age', 'Photoshop', '2023', 'Assignment: Create a collage with digital pictures on Photoshop')">
+                <figcaption>Coll age<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="hands1.jpg" alt="hands" height="450" onclick="openOverlay(['hands1.jpg', 'hands3.jpg'], 'Hands', 'Procreate, Photoshop', '2023', '')">
+                <figcaption>Hands<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="self portraits.PNG" alt="self portraits" height="450" onclick="openOverlay(['self portraits.PNG'], 'Self Portraits', 'Procreate', '2023','')">
+                <figcaption>Self Portraits<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="mag1.jpg" alt="Magazine" height="450" onclick="openOverlay(['mag1.jpg', 'mag2.jpg', 'mag3.PNG'], 'Magazine Project', 'Photoshop, Illustrator, Procreate', '2023','Assignment: Create three pieces that sum the course's content)">
+                <figcaption>Magazine Project<br>2023</figcaption>
+            </figure>
+            <figure>
+                <img src="natural disaster.PNG" alt="natural disaster" height="450" onclick="openOverlay(['natural disaster.PNG'], 'Natural Disaster', 'Procreate', '2022', '')">
+                <figcaption>Natural Disaster<br>2022</figcaption>
+            </figure>
+            <figure>
+                <img src="under construction.PNG" alt="under construction" height="450" onclick="openOverlay(['under construction.PNG'], 'Under Construction', 'Procreate', '2022', '')">
+                <figcaption>Under Construction<br>2022</figcaption>
+            </figure>
+            <figure>
+                <img src="dmproject2.PNG" alt="digital media" height="450" onclick="openOverlay(['dmproject2.PNG'], 'Digital Media Project', 'Procreate', '2022', '')">
+                <figcaption>Digital Media Project<br>2022</figcaption>
+            </figure>
+            <figure>
+                <img src="yokohama.PNG" alt="yokohama" height="450" onclick="openOverlay(['yokohama.PNG'], 'Yokohama', 'Procreate', '2021', '')">
+                <figcaption>Yokohama<br>2021</figcaption>
+            </figure>
+            <figure>
+                <img src="mono3.jpg" alt="null" height="450" onclick="openOverlay(['mono3.jpg'], 'Null', 'Procreate', '2021', '')">
+                <figcaption>Null<br>2021</figcaption>
+            </figure>
+        </div>
     </div>
-  </div>
+
+    <div class="overlay" onclick="closeOverlay(event)">
+        <div id="overlayImages"></div>
+        <p id="overlayCaption"></p>
+    </div>
+
+    <script>
+        function openOverlay(imageSrcs, title, year, medium, info) {
+            var overlay = document.querySelector('.overlay');
+            var overlayImages = document.getElementById('overlayImages');
+            var overlayCaption = document.getElementById('overlayCaption');
+
+            // Clear any existing images
+            overlayImages.innerHTML = '';
+
+            // Create image elements and append them to overlayImages div
+            imageSrcs.forEach(function(src) {
+                var img = document.createElement('img');
+                img.src = src;
+                img.alt = title;
+                overlayImages.appendChild(img);
+            });
+
+            overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info;
+
+            overlay.style.display = "flex";
+        }
+
+        function closeOverlay(event) {
+            var overlay = document.querySelector('.overlay');
+            if (event.target == overlay) {
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
