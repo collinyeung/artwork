@@ -123,11 +123,12 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 2;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            overflow-y: hidden; /* Disable vertical scrolling */
         }
 
         .overlay img {
-            height: 450px;
+            height: 440px;
             margin-left: 10px;
         }
 
@@ -149,6 +150,13 @@
         .overlay p:not(:first-line) {
             font-weight: normal;
             font-size: 18px;
+        }
+
+        /* Grid layout for images in overlay */
+        .overlay .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 10px; /* Gap between images */
         }
     </style>
 </head>
@@ -224,7 +232,7 @@
                 <figcaption>Self Portraits<br>2023</figcaption>
             </figure>
             <figure>
-                <img src="mag1.jpg" alt="Magazine" height="450" onclick="openOverlay(['mag1.jpg', 'mag2.jpg', 'mag3.PNG'], 'Magazine Project', 'Photoshop, Illustrator, Procreate', '2023','Assignment: Create three pieces that sum the course's content)">
+                <img src="mag1.jpg" alt="Magazine" height="450" onclick="openOverlay(['mag1.jpg', 'mag2.jpg'], 'Magazine Project', 'Photoshop, Illustrator, Procreate', '2023','Assignment: Create a magazine that sums up content of course (visuals for magazine)')">
                 <figcaption>Magazine Project<br>2023</figcaption>
             </figure>
             <figure>
@@ -250,7 +258,7 @@
         </div>
     </div>
 
-    <div class="overlay" onclick="closeOverlay(event)">
+     <div class="overlay" onclick="closeOverlay(event)">
         <div id="overlayImages"></div>
         <p id="overlayCaption"></p>
     </div>
@@ -264,13 +272,29 @@
             // Clear any existing images
             overlayImages.innerHTML = '';
 
-            // Create image elements and append them to overlayImages div
-            imageSrcs.forEach(function(src) {
-                var img = document.createElement('img');
-                img.src = src;
-                img.alt = title;
-                overlayImages.appendChild(img);
-            });
+            // If there are only two images, create a grid layout for them
+            if (imageSrcs.length === 2) {
+                var div = document.createElement('div');
+                div.classList.add('image-grid');
+
+                // Create image elements and append them to the grid div
+                imageSrcs.forEach(function(src) {
+                    var img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title;
+                    div.appendChild(img);
+                });
+
+                overlayImages.appendChild(div);
+            } else {
+                // Create image elements and append them to overlayImages div
+                imageSrcs.forEach(function(src) {
+                    var img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title;
+                    overlayImages.appendChild(img);
+                });
+            }
 
             overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info;
 
