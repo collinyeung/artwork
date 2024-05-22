@@ -5,27 +5,26 @@
     <meta charset="UTF-8">
     <title>Collin</title>
     <style>
-         h1 {
+        h1 {
             text-align: right;
             margin-right: 40px;
             font-size: 20px;
             font-family: "Courier New", monospace;
-            position: fixed; /* Make the sign.png fixed */
-            top: 0; /* Position it at the top */
-            left: 0; /* Position it at the right */
-            padding-left: 10px; /* Add padding for better appearance */
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-left: 10px;
         }
 
         body {
             text-align: center;
             font-size: 16px;
             font-family: "Courier New", monospace;
-            display: flex; /* Add this line */
-            flex-direction: column; /* Add this line */
-            align-items: center; /* Add this line */
-            padding-top: 100px; /* Add padding-top to avoid overlapping with the fixed header */
-           overflow-y: hidden; /* Disable vertical scrolling */
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            overflow-x: hidden;
         }
 
         .rect-container {
@@ -39,10 +38,11 @@
 
         .container {
             display: flex;
-            justify-content: flex-start; /* Adjusted to move the content to the left */
-            align-items: flex-start; /* Adjusted to align content to the top */
-            width: 80%; /* Adjust as needed */
-            margin-top: 20px; /* Adjust margin-top to create space */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 20px;
         }
 
         ul {
@@ -50,18 +50,17 @@
             margin: 0;
             padding: 0;
             text-align: left;
-            width: 20%; /* Adjust as needed */
-            position: fixed; /* Make the list fixed */
-            left: 0; /* Position it at the left */
-            top: 100px; /* Position it below the fixed header */
-
+            width: 20%;
+            position: fixed;
+            left: 0;
+            top: 100px;
         }
 
         li {
             font-size: 20px;
             left: 45px;
             top: 90px;
-            position: relative; /* Add this line */
+            position: relative;
         }
 
         a {
@@ -76,41 +75,27 @@
             position: absolute;
         }
 
-        li:hover .hover-image { /* Adjusted to target hover effect on li */
+        li:hover .hover-image {
             display: inline;
             left: -20px;
             bottom: -5px;
         }
 
-        .text-container {
-            width: 40%; /* Adjust as needed */
-            margin-left: 250px; /* Adjust margin-left to create space */
-            text-align: left;
-
-
-        }
-
-        .image-container {
-            width: 30%; /* Adjust as needed */
-            margin-left: -100px; /* Adjust margin-left to create space */
-        }
-
         .gallery-container {
-            align-content: center;
-            margin-left: 185px;
-            top: 10px;
-            float: left;
             display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 80%;
+            margin-left: 25%;
+        }
+
+        .gallery-container figure {
+            display: inline-block;
+            margin-right: 20px;
         }
 
         .gallery-container img {
-            align-content: center;
-            margin-left: -35px;
-            margin-right: -35px;
-            margin-top: -115px; /* Adjust the margin-top as needed to position the images higher */
-            margin-bottom: 10px;
-            cursor: pointer; /* Add this line */
-
+            cursor: pointer;
         }
 
         .overlay {
@@ -119,17 +104,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white; /* Change background color to white */
+            background-color: white;
             display: none;
             justify-content: center;
             align-items: center;
-            overflow-x: auto; /* Allow horizontal scrolling */
-            overflow-y: hidden; /* Disable vertical scrolling */
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
         .overlay img {
             height: 440px;
-            margin-left: 20px;
+            margin-left: 30px;
         }
 
         .overlay p {
@@ -139,24 +124,21 @@
             margin-left: 40px;
             text-align: left;
         }
-      
-        /* Style the first line of text */
+
         .overlay p:first-line {
             font-weight: bold;
             font-size: 24px;
         }
 
-        /* Style the text under the first line */
         .overlay p:not(:first-line) {
             font-weight: normal;
             font-size: 18px;
         }
 
-        /* Grid layout for images in overlay */
         .overlay .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns */
-            gap: 10px; /* Gap between images */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-left: 20px;
         }
     </style>
@@ -199,143 +181,120 @@
                 </a>
             </li>
         </ul>
-        <div class="gallery-container">
-          <figure>
-                <img src="concrete.jpeg" alt="concrete" height="450" onclick="openOverlay(['concrete.jpeg'], 'Concrete', 'Modeling Paste & Paint', '2024', '')">
-                <figcaption>Concrete<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="daily.jpeg" alt="me" height="450" onclick="openOverlay(['daily.jpeg'], 'My Things', 'Procreate', '2024', '')">
-                <figcaption>My Things<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="bone.jpeg" alt="me" height="450" onclick="openOverlay(['bone.jpeg'], 'Bone', 'Pencil', '2024', '')">
-                <figcaption>Bone<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="meat.jpeg" alt="meat" height="450" onclick="openOverlay(['meat.jpeg'], 'Meat', 'Pencil', '2024', '')">
-                <figcaption>Meat<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="girl.jpeg" alt="girl" height="450" onclick="openOverlay(['girl.jpeg'], 'Girl', 'Marker & Pencil Crayon', '2024', '')">
-                <figcaption>Girl<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="skin.jpeg" alt="skin" height="450" onclick="openOverlay(['skin.jpeg'], 'Skin Walker', 'Marker & Pencil Crayon', '2024', '')">
-                <figcaption>Skin Walker<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="poodle.jpeg" alt="poodle" height="450" onclick="openOverlay(['poodle.jpeg'], 'Poodle', 'Marker', '2024', '')">
-                <figcaption>Poodle<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="veins.jpeg" alt="veins" height="450" onclick="openOverlay(['veins.jpeg'], 'Veins', 'Marker & Pencil Crayon', '2024', '')">
-                <figcaption>Veins<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="angel.jpeg" alt="angel" height="450" onclick="openOverlay(['angel.jpeg'], 'Angel', 'Marker', '2024', '')">
-                <figcaption>Angel<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="marg.jpeg" alt="margiela" height="450" onclick="openOverlay(['marg.jpeg'], 'Margiela SS 2024 Couture', 'Markers & Pencil Crayon', '2024', '')">
-                <figcaption>Margiela SS 2024 Couture<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="censor.jpeg" alt="censor" height="450" onclick="openOverlay(['censor.jpeg'], 'Censored', 'Pencil', '2024', '')">
-                <figcaption>Censored<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="water.jpeg" alt="water" height="450" onclick="openOverlay(['water.jpeg'], 'Drenched', 'Pencil Crayon', '2024', '')">
-                <figcaption>Drenched<br>2024</figcaption>
-            </figure>
-          <!-- <figure>
-                <img src="window.jpeg" alt="window" height="450" onclick="openOverlay(['window.jpeg'], 'WNDWLCKR', 'Pencil Crayon', '2024', '')">
-                <figcaption>WNDWLCKR<br>2024</figcaption>
-            </figure> -->
-          <figure>
-                <img src="location.jpeg" alt="location" height="450" onclick="openOverlay(['location.jpeg'], 'Find My Location', 'Pencil Crayon', '2024', '')">
-                <figcaption>Find My Location<br>2024</figcaption>
-            </figure>
-           <figure>
-                <img src="dior0102.jpeg" alt="dior" height="450" onclick="openOverlay(['dior0102.jpeg'], 'Dior FW 2001 Campaign', 'Marker & Pencil Crayon', '2024', '')">
-                <figcaption>Dior FW 2001 Campaign<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="dior01.jpeg" alt="dior" height="450" onclick="openOverlay(['dior01.jpeg'], 'Dior FW 2001', 'Marker & Pencil Crayon', '2024', '')">
-                <figcaption>Dior FW 2001<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="crow.jpeg" alt="crow" height="450" onclick="openOverlay(['crow.jpeg', 'crow2.jpeg'], 'Plague', 'Wire % Tissue Paper', '2024', '')">
-                <figcaption>Plague<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="heart.jpeg" alt="heart" height="450" onclick="openOverlay(['heart.jpeg'], 'Fever', 'Pencil & Pencil Crayon', '2024', '')">
-                <figcaption>Fever<br>2024</figcaption>
-            </figure>
-          <figure>
-                <img src="stipple.jpeg" alt="oil" height="450" onclick="openOverlay(['stipple.jpeg'], 'Stipple', 'Oil Pastel', '2024', '')">
-                <figcaption>Stipple<br>2024</figcaption>
-            </figure>
-            <!-- <figure>
-                <img src="tinier.jpg" alt="me" height="450" onclick="openOverlay(['tinier.jpg'], 'Tinier', 'Photoshop', '2023', 'The prompt being, insert yourself in an imaginary landscape. With influences from retro Japanese ads and with Photoshop, the outcome of this piece is to remind us of the feelings of nostalgia as we mature')">
-                <figcaption>Tinier<br>2023</figcaption>
-            </figure> -->
-            <figure>
-                <img src="me 1.jpg" alt="me" height="450" onclick="openOverlay(['me 1.jpg', 'me 2.jpg'], 'Self Support', 'Photoshop', '2023', 'The prompt being to create an image with multiple versions of yourself. Using Photoshop and influenced by vintage Americana, the piece conveys the importance of self reliance')">
-                <figcaption>Self Support<br>2023</figcaption>
-            </figure>
-            <!-- <figure>
-               <img src="feast for fame.jpg" alt="feast" height="450" onclick="openOverlay(['feast for fame.jpg'], 'Feast for Fame', 'Photoshop', '2023', 'The prompt was to create an image with the combination of three seperate images. This was done with Photoshop to blend items to create a retelling the story of Saturn Devouring his Son by Francisco de Goya')">
-                <figcaption>Feast for Fame<br>2023</figcaption>
-            </figure> -->
-            <figure>
-                <img src="love in colour.jpg" alt="love" height="450" onclick="openOverlay(['love in colour.jpg'], 'Love in Colour', 'Photoshop', '2023', 'The prompt was to create a visual in regards to a social matter. With Photoshop, the work reminds us to love no matter your sexual orientation or skin colour')">
-                <figcaption>Love in Colour<br>2023</figcaption>
-            </figure>
-            <figure>
-                <img src="flood.jpg" alt="flood" height="450" onclick="openOverlay(['flood.jpg'], 'Flood', 'Photoshop', '2023', 'The instructions were to draw an image on Photoshop with the brush tools. On Photoshop, an eerie setting of washroom being flooded gives the viewer a sense of anxiety')">
-                <figcaption>Flood<br>2023</figcaption>
-            </figure>
-            <!-- <figure>
-               <img src="coll age.jpg" alt="coll age" height="450" onclick="openOverlay(['coll age.jpg'], 'Coll age', 'Photoshop', '2023', 'Creating a collage with digital pictures on Photoshop, the intention was to highlight glimpses of my personal style who create who I am, literally')">
-                <figcaption>Coll age<br>2023</figcaption>
-            </figure> 
-            <figure>
-                <img src="hands1.jpg" alt="hands" height="450" onclick="openOverlay(['hands1.jpg', 'hands3.jpg'], 'Hands', 'Procreate, Photoshop', '2023', 'A passion project done by experimenting with Photoshop and Procreate')">
-                <figcaption>Hands<br>2023</figcaption>
-            </figure> -->
-            <figure>
-                <img src="self portraits.PNG" alt="self portraits" height="450" onclick="openOverlay(['self portraits.PNG'], 'Self Portraits', 'Procreate', '2023','A passion project done with pictures of my face on Procreate')">
-                <figcaption>Self Portraits<br>2023</figcaption>
-            </figure>
-            <!--<figure>
-                <img src="mag1.jpg" alt="Magazine" height="450" onclick="openOverlay(['mag1.jpg', 'mag2.jpg'], 'Magazine Project', 'Photoshop, Illustrator, Procreate', '2023','Prompt was to create a magazine that sums up content of course with Photoshop, Illustrator, and Procreate. These were the visuals for magazine with the first one representing the logo created as a tattoo and the second of me breaking out my poster')">
-                <figcaption>Magazine Project<br>2023</figcaption>
-            </figure>-->
-            <figure>
-                <img src="natural disaster.PNG" alt="natural disaster" height="450" onclick="openOverlay(['natural disaster.PNG'], 'Natural Disaster', 'Procreate', '2022', 'The prompt was to create an image that blends two elements to create a piece. With Procreate, I had made beauty from the tragedy of the Titanic')">
-                <figcaption>Natural Disaster<br>2022</figcaption>
-            </figure>
-            <figure>
-                <img src="under construction.PNG" alt="under construction" height="450" onclick="openOverlay(['under construction.PNG'], 'Under Construction', 'Procreate', '2022', 'A passion project done entirely with Procreate. With a picture of me walking, I edited me to be in an orange room. To play with the title name, the picture is seen to be literally under construction')">
-                <figcaption>Under Construction<br>2022</figcaption>
-            </figure>
-            <figure>
-                <img src="dmproject2.PNG" alt="digital media" height="450" onclick="openOverlay(['dmproject2.PNG'], 'Digital Media Project', 'Procreate', '2022', 'A passion project done entirely on Procreate, I experimented with a picture of me to create a rendition of a heat signal')">
-                <figcaption>Digital Media Project<br>2022</figcaption>
-            </figure>
-            <figure>
-                <img src="yokohama.PNG" alt="yokohama" height="450" onclick="openOverlay(['yokohama.PNG'], 'Yokohama', 'Procreate', '2021', 'A passion project done on Procreate with a picture taken from a recent trip to Yokohama')">
-                <figcaption>Yokohama<br>2021</figcaption>
-            </figure>
-            <figure>
-                <img src="mono3.jpg" alt="null" height="450" onclick="openOverlay(['mono3.jpg'], 'Null', 'Procreate', '2021', 'An experimental drawing done on Procreate, using my pre existing drawings as assets, blending traditional mediums with digital ones')">
-                <figcaption>Null<br>2021</figcaption>
-            </figure>
+       
+<div class="gallery-container">
+    <figure>
+        <img src="concrete.jpeg" alt="Concrete" height="550" onclick="openOverlay(['concrete.jpeg'], 'Concrete', 'Modeling Paste & Paint', '2024', '')">
+        <figcaption>Concrete<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="daily.jpeg" alt="My Things" height="550" onclick="openOverlay(['daily.jpeg'], 'My Things', 'Procreate', '2024', '')">
+        <figcaption>My Things<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="bone.jpeg" alt="Bone" height="550" onclick="openOverlay(['bone.jpeg'], 'Bone', 'Pencil', '2024', '')">
+        <figcaption>Bone<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="meat.jpeg" alt="Meat" height="550" onclick="openOverlay(['meat.jpeg'], 'Meat', 'Pencil', '2024', '')">
+        <figcaption>Meat<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="girl.jpeg" alt="Girl" height="550" onclick="openOverlay(['girl.jpeg'], 'Girl', 'Marker & Pencil Crayon', '2024', '')">
+        <figcaption>Girl<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="skin.jpeg" alt="Skin Walker" height="550" onclick="openOverlay(['skin.jpeg'], 'Skin Walker', 'Marker & Pencil Crayon', '2024', '')">
+        <figcaption>Skin Walker<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="poodle.jpeg" alt="Poodle" height="550" onclick="openOverlay(['poodle.jpeg'], 'Poodle', 'Marker', '2024', '')">
+        <figcaption>Poodle<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="veins.jpeg" alt="Veins" height="550" onclick="openOverlay(['veins.jpeg'], 'Veins', 'Marker & Pencil Crayon', '2024', '')">
+        <figcaption>Veins<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="angel.jpeg" alt="Angel" height="550" onclick="openOverlay(['angel.jpeg'], 'Angel', 'Marker', '2024', '')">
+        <figcaption>Angel<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="marg.jpeg" alt="Margiela SS 2024 Couture" height="550" onclick="openOverlay(['marg.jpeg'], 'Margiela SS 2024 Couture', 'Markers & Pencil Crayon', '2024', '')">
+        <figcaption>Margiela SS 2024 Couture<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="censor.jpeg" alt="Censored" height="550" onclick="openOverlay(['censor.jpeg'], 'Censored', 'Pencil', '2024', '')">
+        <figcaption>Censored<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="water.jpeg" alt="Drenched" height="550" onclick="openOverlay(['water.jpeg'], 'Drenched', 'Pencil Crayon', '2024', '')">
+        <figcaption>Drenched<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="location.jpeg" alt="Find My Location" height="550" onclick="openOverlay(['location.jpeg'], 'Find My Location', 'Pencil Crayon', '2024', '')">
+        <figcaption>Find My Location<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="dior0102.jpeg" alt="Dior FW 2001 Campaign" height="550" onclick="openOverlay(['dior0102.jpeg'], 'Dior FW 2001 Campaign', 'Marker & Pencil Crayon', '2024', '')">
+        <figcaption>Dior FW 2001 Campaign<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="dior01.jpeg" alt="Dior FW 2001" height="550" onclick="openOverlay(['dior01.jpeg'], 'Dior FW 2001', 'Marker & Pencil Crayon', '2024', '')">
+        <figcaption>Dior FW 2001<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="crow.jpeg" alt="Plague" height="550" onclick="openOverlay(['crow.jpeg', 'crow2.jpeg'], 'Plague', 'Wire & Tissue Paper', '2024', '')">
+        <figcaption>Plague<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="heart.jpeg" alt="Fever" height="550" onclick="openOverlay(['heart.jpeg'], 'Fever', 'Pencil & Pencil Crayon', '2024', '')">
+        <figcaption>Fever<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="stipple.jpeg" alt="Stipple" height="550" onclick="openOverlay(['stipple.jpeg'], 'Stipple', 'Oil Pastel', '2024', '')">
+        <figcaption>Stipple<br>2024</figcaption>
+    </figure>
+    <figure>
+        <img src="me 1.jpg" alt="Self Support" height="550" onclick="openOverlay(['me 1.jpg', 'me 2.jpg'], 'Self Support', 'Photoshop', '2023', 'The prompt being to create an image with multiple versions of yourself. Using Photoshop and influenced by vintage Americana, the piece conveys the importance of self reliance')">
+        <figcaption>Self Support<br>2023</figcaption>
+    </figure>
+    <figure>
+        <img src="love in colour.jpg" alt="Love in Colour" height="550" onclick="openOverlay(['love in colour.jpg'], 'Love in Colour', 'Photoshop', '2023', 'The prompt was to create a visual in regards to a social matter. With Photoshop, the work reminds us to love no matter your sexual orientation or skin colour')">
+        <figcaption>Love in Colour<br>2023</figcaption>
+    </figure>
+    <figure>
+        <img src="flood.jpg" alt="Flood" height="550" onclick="openOverlay(['flood.jpg'], 'Flood', 'Photoshop', '2023', 'The instructions were to draw an image on Photoshop with the brush tools. On Photoshop, an eerie setting of washroom being flooded gives the viewer a sense of anxiety')">
+        <figcaption>Flood<br>2023</figcaption>
+    </figure>
+    <figure>
+        <img src="self portraits.PNG" alt="Self Portraits" height="550" onclick="openOverlay(['self portraits.PNG'], 'Self Portraits', 'Procreate', '2023','A passion project done with pictures of my face on Procreate')">
+        <figcaption>Self Portraits<br>2023</figcaption>
+    </figure>
+    <figure>
+        <img src="natural disaster.PNG" alt="Natural Disaster" height="550" onclick="openOverlay(['natural disaster.PNG'], 'Natural Disaster', 'Procreate', '2022', 'The prompt was to create an image that blends two elements to create a piece. With Procreate, I had made beauty from the tragedy of the Titanic')">
+        <figcaption>Natural Disaster<br>2022</figcaption>
+    </figure>
+    <figure>
+        <img src="under construction.PNG" alt="Under Construction" height="550" onclick="openOverlay(['under construction.PNG'], 'Under Construction', 'Procreate', '2022', 'A passion project done entirely with Procreate. With a picture of me walking, I edited me to be in an orange room. To play with the title name, the picture is seen to be literally under construction')">
+        <figcaption>Under Construction<br>2022</figcaption>
+    </figure>
+    <figure>
+        <img src="dmproject2.PNG" alt="Digital Media Project" height="550" onclick="openOverlay(['dmproject2.PNG'], 'Digital Media Project', 'Procreate', '2022', 'A passion project done entirely on Procreate, I experimented with a picture of me to create a rendition of a heat signal')">
+        <figcaption>Digital Media Project<br>2022</figcaption>
+    </figure>
+    <figure>
+        <img src="yokohama.PNG" alt="Yokohama" height="550" onclick="openOverlay(['yokohama.PNG'], 'Yokohama', 'Procreate', '2021', 'A passion project done on Procreate with a picture taken from a recent trip to Yokohama')">
+        <figcaption>Yokohama<br>2021</figcaption>
+    </figure>
+    <figure>
+        <img src="mono3.jpg" alt="Null" height="550" onclick="openOverlay(['mono3.jpg'], 'Null', 'Procreate', '2021', 'A passion project done on Procreate')">
+        <figcaption>Null<br>2021</figcaption>
+</figure>
         </div>
     </div>
 
-     <div class="overlay" onclick="closeOverlay(event)">
+    <div class="overlay" onclick="closeOverlay(event)">
         <div id="overlayImages"></div>
         <p id="overlayCaption"></p>
     </div>
@@ -346,16 +305,13 @@
             var overlayImages = document.getElementById('overlayImages');
             var overlayCaption = document.getElementById('overlayCaption');
 
-            // Clear any existing images
             overlayImages.innerHTML = '';
 
-            // If there are only two images, create a grid layout for them
             if (imageSrcs.length === 2) {
                 var div = document.createElement('div');
                 div.classList.add('image-grid');
 
-                // Create image elements and append them to the grid div
-                imageSrcs.forEach(function(src) {
+                imageSrcs.forEach(function (src) {
                     var img = document.createElement('img');
                     img.src = src;
                     img.alt = title;
@@ -364,8 +320,7 @@
 
                 overlayImages.appendChild(div);
             } else {
-                // Create image elements and append them to overlayImages div
-                imageSrcs.forEach(function(src) {
+                imageSrcs.forEach(function (src) {
                     var img = document.createElement('img');
                     img.src = src;
                     img.alt = title;
@@ -374,7 +329,6 @@
             }
 
             overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info;
-
             overlay.style.display = "flex";
         }
 
